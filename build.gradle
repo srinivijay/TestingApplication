@@ -1,0 +1,48 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'war'
+apply plugin: 'org.springframework.boot'
+
+jar {
+    baseName = 'gs-rest-service'
+    version =  '0.1.0'
+}
+
+
+war {
+    baseName = 'myapp'
+    version =  '0.1.0'
+}
+bootRepackage {
+    mainClass = 'java/hello/Application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+	compile("org.springframework.boot:spring-boot-starter-web")
+	compile 'junit:junit:4.12'
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-test', version: '1.4.7.RELEASE'
+   	compile group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: '1.4.1.RELEASE'
+	compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '9.0.0.M11'
+	compile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
+
+
+
+}
